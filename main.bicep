@@ -15,11 +15,11 @@ module appPlanDeploy 'appPlan.bicep' = {
 
 var websites = [
   {
-    name: 'fancy'
+    name: 'demofancy'
     tag: 'latest'
   }
   {
-    name: 'plain'
+    name: 'demoplain'
     tag: 'plain-text'
   }
 ]
@@ -32,6 +32,7 @@ module siteDeploy 'site.bicep' = [for site in websites: {
     namePrefix: site.name
     dockerImage: 'nginxdemos/hello'
     dockerImageTag: site.tag
+    locked: false
   }
 }]
 
